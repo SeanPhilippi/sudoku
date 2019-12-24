@@ -29,4 +29,13 @@ def print_board(board):
         # print the character at board[i][j] with end argument of '' so more characters concatenate
         print(str(board[i][j]) + ' ', end='')
 
-print_board(board)
+# print_board(board)
+
+# returns coordinates of empties
+def find_empty(board):
+  for i in range(len(board)): # for each row
+    for j in range(len(board[0])): # for each column
+      if board[i][j] == 0:
+        return (i, j) # return tuple of row, column
+
+print(find_empty(board))
