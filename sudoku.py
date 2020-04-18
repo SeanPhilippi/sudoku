@@ -10,6 +10,9 @@ board = [
   [5,4,6,1,7,7,6,9,0]
 ]
 
+def solve(board):
+
+
 # the board (array of arrays), num being inserted, and coordinates for insertion
 def valid(board, num, coords):
   # check row
@@ -26,14 +29,16 @@ def valid(board, num, coords):
     if board[i][coords[1]] == num and coords[0] != i:
       return False
 
-  # check box
-  box_x = coords[1] // 3
-  box_y = coords[0] // 3
+  # check box (9 boxes)
+  box_x = coords[1] // 3 # divide by 3 to determine column index of box, or x position (0-2)
+  box_y = coords[0] // 3 # divide by 3 to determine row index of box, or y position (0-2)
 
+  # loop through the found box and make sure the same number doesn't appear twice
   for i in range(box_y * 3, box_y * 3 + 3):
     for j in range(box_x * 3, box_x * 3 + 3):
       if board[i][j] == num and (i, j) != coords:
         return False
+  return True
 
 valid(board, 1, (1, 2))
 
